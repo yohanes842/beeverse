@@ -1,0 +1,41 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.centered-form {
+    padding: 27px;
+    width: 65%;
+    max-width: 670px;
+    background: white !important;
+    margin-block: 100px;
+}
+
+.content-body {
+    background-color: #ddeeff;
+    padding-top: 70px;
+    height: 100%;
+}
+
+a {
+    cursor: pointer;
+}
+
+button {
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(105%);
+    filter: brightness(110%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #2e0249 !important;
+}

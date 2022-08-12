@@ -1,0 +1,147 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        User::insert([
+            [
+                'name' => 'Andi',
+                'nickname' => 'andi02',
+                'age' => 20,
+                'hobby' => 'basketball-futsal-jogging',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igandi',
+                'mobile_number' => '081234567890',
+                'email' => 'andi@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 1,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar1.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Budi',
+                'nickname' => 'budiaja',
+                'age' => 20,
+                'hobby' => 'swimming-cycling-jogging',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igbudi',
+                'mobile_number' => '081234567891',
+                'email' => 'budi@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 2,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar2.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Caca',
+                'nickname' => 'cacacz',
+                'age' => 20,
+                'hobby' => 'singing-reading-dancing',
+                'gender_id' => 2,
+                'instagram_username' => 'http://www.instagram.com/igcaca',
+                'mobile_number' => '081234567892',
+                'email' => 'caca@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 1,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar3.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dodo',
+                'nickname' => 'dodolho',
+                'age' => 20,
+                'hobby' => 'travelling-walking-sleeping',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igdodo',
+                'mobile_number' => '081234567893',
+                'email' => 'dodo@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 2,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar4.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Estes',
+                'nickname' => 'esteszz',
+                'age' => 20,
+                'hobby' => 'cooking-eating-mountain climbing',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igestes',
+                'mobile_number' => '081234567894',
+                'email' => 'estes@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 1,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar5.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Fifa',
+                'nickname' => 'fifa21',
+                'age' => 20,
+                'hobby' => 'golf-billiard-football',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igfifa',
+                'mobile_number' => '081234567895',
+                'email' => 'george@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 1,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar6.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Sasa',
+                'nickname' => 'sasalala',
+                'age' => 20,
+                'hobby' => 'badminton-kite-volley',
+                'gender_id' => 1,
+                'instagram_username' => 'http://www.instagram.com/igsasa',
+                'mobile_number' => '081234567896',
+                'email' => 'sasa@gmail.com',
+                'password' => Hash::make('test111'),
+                'balance' => 1000000,
+                'visible_status_id' => 1,
+                'payment_status_id' => 2,
+                'payment_price' => 100000,
+                'image_profile' => 'avatar/avatar7.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+    }
+}
