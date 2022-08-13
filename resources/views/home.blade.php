@@ -5,12 +5,12 @@
 @section('body')
 
     <h2 class="text-center">
-        Fellow users</h2>
-    <h6 class="text-center">Find someone you might like...</h6>
+        @lang('home.title1')</h2>
+    <h6 class="text-center">@lang('home.title2')</h6>
     <div class="d-flex mx-auto gap-5" style="width: 80%">
         <form id="formFilter" action="{{ route('search') }}" method="GET" class="d-flex" role="search">
             <div class="p-2 my-5 shadow-lg" style="min-width: 197px; background: #FFF9D7; height: fit-content">
-                <h5 class="ms-2">Filter Hobbies</h5>
+                <h5 class="ms-2">@lang('home.filter')</h5>
                 <input type="hidden" id="search-key" name="search-keyword">
                 <input type="hidden" id="gender-key" name="gender">
                 @foreach ($hobbies as $hobby)
@@ -21,7 +21,7 @@
                         </label>
                     </div>
                 @endforeach
-                <button class="btn btn-sm text-light mt-3" style="background: #7834fc; width: 100%;" type="submit"> Filter</button>
+                <button class="btn btn-sm text-light mt-3" style="background: #7834fc; width: 100%;" type="submit">@lang('general.filter')</button>
             </div>
         </form>
         <div class="d-flex flex-wrap gap-5 mx-auto my-5" style="width:86%">
@@ -72,7 +72,7 @@
                 </div>
             </a>
             @empty
-                <h2 class="text-center" style="width: 100%">No query result!</h2>
+                <h2 class="text-center position-absolute start-0" style="width: 100vw">@lang('home.no_result')</h2>
             @endforelse
         </div>
     </div>

@@ -50,7 +50,7 @@ class WishlistController extends Controller
     }
 
     public function friends_index(){
-        $friends = auth()->user()->wishlists()->where('isFriend', true)->get();
+        $friends = auth()->user()->wishlists()->with('user')->where('isFriend', true)->get();
 
         return view('friends')->with('friends', $friends);
     }

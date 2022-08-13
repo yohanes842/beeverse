@@ -29,20 +29,20 @@
                 <p class="text-danger">{{ $message }}</p>
             @else
                 @if($errors->any())
-                    <p class="text-danger">Invalid credentials!</p>
+                    <p class="text-danger">@lang('login.invalid')</p>
                 @endif
             @enderror
             <div class="form-floating">
                 <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                <label for="email">Email address</label>
+                <label for="email">@lang('login.email')</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                <label for="password">Password</label>
+                <label for="password">@lang('login.password')</label>
             </div>
             <div class="d-flex justify-content-center flex-column" style="width: 100%">
-                <div class="my-2"><a class="text-muted" href="{{route('register')}}">Don't have any accounts? Register Now!</a></div>
-                <button type="submit" class="btn btn-lg text-light" style="background: #7834fc;">Login</button>
+                <div class="my-2"><a class="text-muted" href="{{route('register')}}">@lang('login.link_register')</a></div>
+                <button type="submit" class="btn btn-lg text-light" style="background: #7834fc;">@lang('login.login_btn')</button>
             </div>
           </form>
     </div>

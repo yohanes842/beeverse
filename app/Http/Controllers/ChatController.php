@@ -10,16 +10,19 @@ class ChatController extends Controller
 {
     public function index(User $user){
         $current = auth()->user();
-        $chats = Chat::where('user_id', $current->id)
-                    ->where('to_user_id', $user->id)
-                    ->orWhere(function ($whereQuery) use ($user, $current) {
-                        $whereQuery = $whereQuery->where('chats.user_id', $user->id)
-                                        ->where('chats.to_user_id', $current->id);
-                    })->get();
         
-        foreach($chats as $chat){
+        $read = Chat::where('user_id', $user->id)
+            ->where('to_user_id', $current->id);
+        
+        foreach($read->get() as $chat){
             $chat->isRead = true;
+            $chat->save();
         }
+
+        $chats = $read->orWhere(function ($whereQuery) use ($user, $current) {
+                        $whereQuery = $whereQuery->where('chats.user_id', $current->id)
+                                        ->where('chats.to_user_id', $user->id);
+                        })->get();
 
         return view('chat')->with([
             'chats'=> $chats,

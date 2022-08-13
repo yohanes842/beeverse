@@ -29,9 +29,9 @@ class AccountController extends Controller
                 return redirect()->route('payment', $user);
             }
             $request->session()->regenerate();
-            return redirect()->route('home')->with('message', 'Login successful!');
+            return redirect()->route('home')->with('message', __('message.login.success'));
         }
-        return redirect()->back()->with('message', 'Invalid login credentials');
+        return redirect()->back()->with('message', __('message.login.invalid'));
     }
 
     public function register_index(){
@@ -89,18 +89,17 @@ class AccountController extends Controller
         $sufficient = $user->payment_price - $request->amount;
         if($sufficient > 0){
             $sufficient = number_format($sufficient);
-            return redirect()->route('payment', $user)->with('underpaid', "You are still underpaid $sufficient coins");
+            return redirect()->route('payment', $user)->with('underpaid', __('message.payment.underpaid') .$sufficient. __('general.coin'));
         } else if($sufficient < 0){
             $overpaid = $sufficient*(-1);
             $user->payment_status_id = 2;
             $user->balance = $user->balance + $overpaid;
             $user->save();
-            $overpaid = number_format($overpaid);
-            return redirect()->route('login')->with('message', "Successful register and activate account with initial balance $user->balance coins");
+            return redirect()->route('login')->with('message', __('message.payment.success')." ".number_format($user->balance)." ".__('general.coin'));
         } else{
             $user->payment_status_id = 2;
             $user->save();
-            return redirect()->route('login')->with('message', 'Successful register and activate account with initial balance 0 coins');
+            return redirect()->route('login')->with('message', __('message.payment.success') ." 0 ". __('general.coin'));
         }
     }
 
@@ -111,6 +110,6 @@ class AccountController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('home')->with('message', 'Logout successful!');
+        return redirect()->route('home')->with('message', __('message.logout.success'));
     }
 }

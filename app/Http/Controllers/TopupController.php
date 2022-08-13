@@ -12,12 +12,12 @@ class TopupController extends Controller
 
     public function add_coin(User $user){
         if($user != auth()->user()){
-            return redirect()->back()->with('message', "Sorry there is a problem. Please try again!");
+            return redirect()->back()->with('message', __('message.problem'));
         } else{
             $user->balance = $user->balance + 100;
             $user->save();
     
-            return redirect()->back()->with('message', "+100 Your current balance : $user->balance coins");
+            return redirect()->back()->with('message', __('message.add_coin')." ".number_format($user->balance)." ". __('general_coin'));
         }
        
     }

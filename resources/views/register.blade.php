@@ -26,21 +26,21 @@
             @csrf
             <div class="form-floating mb-3">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name') }}">
-                <label for="name">Name</label>
+                <label for="name">@lang('register.name')</label>
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
                 <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Nickname" value="{{ old('nickname') }}">
-                <label for="nickname">Nickname</label>
+                <label for="nickname">@lang('register.nickname')</label>
                 @error('nickname')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
                 <input type="number" name="age" class="form-control" id="age" placeholder="Age" value="{{ old('age') }}">
-                <label for="age">Age</label>
+                <label for="age">@lang('register.age')</label>
                 @error('age')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -50,13 +50,13 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="maleCheckbox" value="1" @if(old('gender') == 1) checked @endif>
                         <label class="form-check-label" for="male">
-                            Male
+                            @lang('register.male')
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="femaleCheckbox" value="2" @if(old('gender') == 2) checked @endif>
                         <label class="form-check-label" for="female">
-                            Female
+                            @lang('register.female')
                         </label>
                     </div>
                 </div>
@@ -66,32 +66,24 @@
             </div>
             <div class="form-floating mb-3">
                 <input type="text" name="instagram_username" class="form-control" id="instagram_username" placeholder="Instagram username" value="{{ old('instagram_username') }}">
-                <label for="instagram_username">Instagram username</label>
+                <label for="instagram_username">@lang('register.instagram_username')</label>
                 @error('instagram_username')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
                 <input type="text" name="mobile_number" class="form-control" id="mobile_number" placeholder="Mobile number" value="{{ old('mobile_number') }}">
-                <label for="mobile_number">Mobile number</label>
+                <label for="mobile_number">@lang('register.mobile_number')</label>
                 @error('mobile_number')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                <Label for="hobbies" class="fs-5">Select hobbies <span class="fs-6 text-muted">(min: 3)</span></Label>
+                <Label for="hobbies" class="fs-5">@lang('register.hobbies.input')<span class="fs-6 text-muted">(min: 3)</span></Label>
                 <div id="hobby-field-container" class="ms-3">
-                    <input type="text" class="form-control mb-1" placeholder="Enter your hobby" name="hobbies[]" required>
-                    <input type="text" class="form-control mb-1" placeholder="Enter your hobby" name="hobbies[]" required>
-                    <input type="text" class="form-control mb-1" placeholder="Enter your hobby" name="hobbies[]" required>
-                    {{-- @foreach ($hobbies as $hobby)
-                        <div class="form-check">
-                            <input class="form-check-input" name="hobbies[]" type="checkbox" value="{{ $hobby->id }}" id="flexCheckDefault" {{ (is_array(old('hobbies')) && in_array($hobby->id, old('hobbies'))) ? ' checked' : '' }}>
-                            <label class="form-check-label" for="hobbies[]">
-                                {{ $hobby->hobby_name }}
-                            </label>
-                        </div>
-                        @endforeach --}}
+                    <input type="text" class="form-control mb-1" placeholder="@lang('register.hobbies.placeholder')" name="hobbies[]" required>
+                    <input type="text" class="form-control mb-1" placeholder="@lang('register.hobbies.placeholder')" name="hobbies[]" required>
+                    <input type="text" class="form-control mb-1" placeholder="@lang('register.hobbies.placeholder')" name="hobbies[]" required>
                     </div>
                     <button id="add-field-btn" class="btn btn-primary fs-5 px-2 lh-1 m-1" type="button" id="add-field">+</button>
                 @error('hobbies')
@@ -100,28 +92,28 @@
             </div>
             <div class="form-floating mb-3">
                 <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" value="{{ old('email') }}">
-                <label for="email">Email address</label>
+                <label for="email">@lang('register.email')</label>
                 @error('email')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                <label for="password">Password</label>
+                <label for="password">@lang('register.password')</label>
                 @error('password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
                 <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm password">
-                <label for="confirm_password">Confrim password</label>
+                <label for="confirm_password">@lang('register.c_password')</label>
                 @error('confirm_password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="d-flex justify-content-center text-center flex-column" style="width: 100%">
-                <a class="text-muted mb-2" href="{{route('login')}}">Already have an account? Login now!</a>
-                <button type="submit" class="btn btn-lg text-light" style="background: #7834fc;">Register</button>
+                <a class="text-muted mb-2" href="{{route('login')}}">@lang('register.link_login')</a>
+                <button type="submit" class="btn btn-lg text-light" style="background: #7834fc;">@lang('register.register')</button>
             </div>
           </form>
     </div>

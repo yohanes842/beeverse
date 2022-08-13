@@ -4,7 +4,7 @@
 
 @section('body')
 <div class="scroll-chat mx-2 overflow-scroll mb-0" style="height:84vh; scroll-behavior: smooth;">
-    <p class="mx-auto bg-dark rounded-pill text-light px-2" style="width: fit-content">Today</p>
+    <p class="mx-auto bg-dark rounded-pill text-light px-2" style="width: fit-content">@lang('general.today')</p>
         @foreach($chats as $chat)
             {{-- @if(date('d-m-Y', strtotime($chat->created_at)) == date('d-m-Y', strtotime(now()))) --}}
             @if($chat->user_id == auth()->user()->id)
@@ -19,7 +19,7 @@
                         </p>
                         <span class="text-light mx-1" style="font-size: 10pt; line-height: 15px">
                             @if($chat->isRead)
-                                <p class="mb-0">Read</p>
+                                <p class="mb-0">@lang('general.read')</p>
                             @endif
                             <p class="mb-0">{{date('H:i', strtotime($chat->created_at)) }}</p>
                         </span>
@@ -37,7 +37,7 @@
                         </p>
                         <span class="text-light mx-1" style="font-size: 10pt; line-height: 15px">
                             @if($chat->isRead)
-                                <p class="mb-0">Read</p>
+                                <p class="mb-0">@lang('general.read')</p>
                             @endif
                             <p class="mb-0">{{date('H:i', strtotime($chat->created_at)) }}</p>
                         </span>
@@ -48,8 +48,8 @@
     </div>
     <form action="{{route('chat', $user)}}" method="POST">
     @csrf
-    <div class="input-group mb-3 position-absolute bottom-0">
-            <input type="text" name="chat" class="form-control"  placeholder="Enter a message" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group mb-3 position-absolute bottom-0 mx-1" style="width: 99.5vw">
+            <input type="text" name="chat" autocomplete="off" class="form-control"  placeholder="Enter a message" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="text-light btn" type='submit' style="border: none; background-color: #7834fc;">
                 <i class="fa-solid fa-arrow-right"></i>
             </button>

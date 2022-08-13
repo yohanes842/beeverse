@@ -12,10 +12,12 @@ class AvatarController extends Controller
 {
     public function shop_index(){
         $avatars = Avatar::all();
-        $friends = auth()->user()->wishlists()->where('isFriend', true)->get();
+        $avatars_had = UsersAvatar::with('avatar')->where('user_id', auth()->user()->id)->get();
+        $friends = auth()->user()->wishlists()->with('user')->where('isFriend', true)->get();
 
         return view('avatar')->with([
             'avatars' => $avatars,
+            'had' => $avatars_had,
             'friends' => $friends
         ]);
     }
@@ -25,9 +27,9 @@ class AvatarController extends Controller
         $isExists = $user->usersAvatars()->where('avatar_id', $avatar->id)->first();
 
         if($user->balance < $avatar->price){
-            return redirect()->back()->with('warning', 'Insufficient balance!');
+            return redirect()->back()->with('warning', __('message.insufficient'));
         }elseif($isExists){
-            return redirect()->back()->with('message', 'Sorry there is a problem. Please try again!');
+            return redirect()->back()->with('message', __('message.problem'));
         }
 
         $user->balance = $user->balance - $avatar->price;
@@ -38,7 +40,7 @@ class AvatarController extends Controller
             'avatar_id' => $avatar->id,
         ]);
 
-        return redirect()->back()->with('message', 'Successfull purchased avatar!');
+        return redirect()->back()->with('message', __('message.avatar_success.purchase'));
     }
 
     public function collection_index(User $user){
@@ -55,13 +57,13 @@ class AvatarController extends Controller
         $isExists = $user->usersAvatars()->where('avatar_id', $avatar->id)->first();
 
         if(!$isExists){
-            return redirect()->back()->with('message', 'Sorry there is a problem. Please try again!');
+            return redirect()->back()->with('message', __('message.problem'));
         }
         
         $user->image_profile = $avatar->image_url;
         $user->save();
 
-        return redirect()->back()->with('message', 'Successfull set profile!');
+        return redirect()->back()->with('message', __('message.avatar_success.profile'));
     }
 
     public function send_avatar(Request $request, User $user){
@@ -71,7 +73,7 @@ class AvatarController extends Controller
         $isExists = $user->usersAvatars()->where('avatar_id', $avatar->id)->first();
 
         if($current->balance < $avatar->price){
-            return redirect()->back()->with('warning', 'Insufficient balance!');
+            return redirect()->back()->with('warning', __('message.insufficient'));
         }elseif($isExists){
             return redirect()->back()->with('message', 'Your friends already had this avatar! Send the other avatar from your list!');
         }
@@ -84,6 +86,6 @@ class AvatarController extends Controller
             'avatar_id' => $avatar->id,
         ]);
 
-        return redirect()->back()->with('message', 'Succesful sent avatar!');
+        return redirect()->back()->with('message', __('message.avatar_success.send'));
     }
 }

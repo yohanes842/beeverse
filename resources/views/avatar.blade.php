@@ -3,46 +3,19 @@
 @section('title', 'Shop')
 
 @section('body')
-    <h2 class="text-center">Avatar Shop</h2>
-    <h6 class="text-center">Find what you like...</h6>
+    <h2 class="text-center">@lang('shop.title1')</h2>
+    <h6 class="text-center">@lang('shop.title2')</h6>
     <div class="d-flex flex-wrap gap-5 mx-auto my-5" style="width:86%">
-        @forelse($avatars as $avatar)
-            @if(auth()->user()->usersAvatars()->where('avatar_id', $avatar->id)->first())
+        @foreach($avatars as $avatar)
+            @if(!auth()->user()->usersAvatars()->where('avatar_id', $avatar->id)->first())
                 <div class="card shadow" style="width: 18rem">
-                    <img src="{{$avatar->image_url}}" class="card-img-top img-fluid" style="width: 286px; height: 429px; object-fit:cover; filter: brightness(67%); background: #feefff;" alt="...">
+                    <img src="{{asset($avatar->image_url)}}" class="card-img-top img-fluid" style="width: 286px; height: 429px; object-fit:cover; background: #feefff;" alt="...">
                     <div class="card-body d-flex flex-column justify-content-between align-items-center gap-2" style="background: #FFF9D7; filter: drop-shadow(0 -1mm 1rem #370042);">
                         <div class="d-flex align-items-center" style="width: 100%">
                             <div style="color: #C689C6">
                                 <h4 card-title mb-0>{{$avatar->name}}</h4>
                                 <h6 class="card-title mb-0">
-                                    Price : 
-                                    <i class="fa-solid fa-coins fa-1x mx-1" style="color: gold"></i>
-                                    {{ number_format($avatar->price) }}
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="justify-content-end d-flex gap-2" style="width: 100%">
-                            <form action="{{ route('purchase', $avatar) }}" method="POST">
-                                @csrf
-                                <button class="text-light btn btn-secondary" type='submit' style="border: none;" disabled>
-                                    Already Had
-                                </button>
-                            </form>
-                            <button avatar="{{$avatar}}" data-bs-toggle="modal" data-bs-target="#send-modal" class="gift-btn text-light btn" type='button' style="border: none; background-color: #7834fc;">
-                                <i class="fa-solid fa-gift fa-1x mx-1" style="color: #FBCAFF"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="card shadow" style="width: 18rem">
-                    <img src="{{$avatar->image_url}}" class="card-img-top img-fluid" style="width: 286px; height: 429px; object-fit:cover; background: #feefff;" alt="...">
-                    <div class="card-body d-flex flex-column justify-content-between align-items-center gap-2" style="background: #FFF9D7; filter: drop-shadow(0 -1mm 1rem #370042);">
-                        <div class="d-flex align-items-center" style="width: 100%">
-                            <div style="color: #C689C6">
-                                <h4 card-title mb-0>{{$avatar->name}}</h4>
-                                <h6 class="card-title mb-0">
-                                    Price : 
+                                    @lang('general.price') : 
                                     <i class="fa-solid fa-coins fa-1x mx-1" style="color: gold"></i>
                                     {{ number_format($avatar->price) }}
                                 </h6>
@@ -52,7 +25,7 @@
                             <form action="{{ route('purchase', $avatar) }}" method="POST">
                                 @csrf
                                     <button class="text-light btn" type='submit' style="border: none; background-color: #7834fc;">
-                                        Purchase
+                                        @lang('shop.purchase')
                                     </button>
                             </form>
                             <button avatar="{{$avatar}}" data-bs-toggle="modal" data-bs-target="#send-modal" class="gift-btn text-light btn" type='button' style="border: none; background-color: #7834fc;">
@@ -62,16 +35,42 @@
                     </div>
                 </div>
             @endif
-        @empty
-            <h2 class="text-center" style="width: 100%">No avatar available!</h2>
-        @endforelse
+        @endforeach
+        @foreach($had as $avatar)
+                <div class="card shadow" style="width: 18rem">
+                    <img src="{{asset($avatar->avatar->image_url)}}" class="card-img-top img-fluid" style="width: 286px; height: 429px; object-fit:cover; filter: brightness(67%); background: #feefff;" alt="...">
+                    <div class="card-body d-flex flex-column justify-content-between align-items-center gap-2" style="background: #FFF9D7; filter: drop-shadow(0 -1mm 1rem #370042);">
+                        <div class="d-flex align-items-center" style="width: 100%">
+                            <div style="color: #C689C6">
+                                <h4 card-title mb-0>{{$avatar->avatar->name}}</h4>
+                                <h6 class="card-title mb-0">
+                                    @lang('general.price') : 
+                                    <i class="fa-solid fa-coins fa-1x mx-1" style="color: gold"></i>
+                                    {{ number_format($avatar->avatar->price) }}
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="justify-content-end d-flex gap-2" style="width: 100%">
+                            <form action="{{ route('purchase', $avatar->avatar) }}" method="POST">
+                                @csrf
+                                <button class="text-light btn btn-secondary" type='submit' style="border: none;" disabled>
+                                    @lang('shop.had')
+                                </button>
+                            </form>
+                            <button avatar="{{$avatar->avatar}}" data-bs-toggle="modal" data-bs-target="#send-modal" class="gift-btn text-light btn" type='button' style="border: none; background-color: #7834fc;">
+                                <i class="fa-solid fa-gift fa-1x mx-1" style="color: #FBCAFF"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        @endforeach
     </div>
     
     <div class="modal"  id="send-modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content" style="background: #FFF9D7">
             <div class="modal-header">
-              <h5 class="modal-title">Select your friends</h5>
+              <h5 class="modal-title">@lang('shop.select_friend')</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -100,7 +99,7 @@
                         </form>
                     </div>
                 @empty
-                    <h5>No friends available!</h5>
+                    <h5>@lang('shop.no_friend')</h5>
                 @endforelse
             </div>
             <div class="modal-footer">

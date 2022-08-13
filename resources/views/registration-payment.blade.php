@@ -21,21 +21,21 @@
 </head>
 <body style="display: flex; justify-content: center; background: #DDDDDD">
     <div class="centered-form" style="color: #7A4495">
-        <h3 class="text-center mb-3" style="color: #7834fc">Registration Payment</h3>
+        <h3 class="text-center mb-3" style="color: #7834fc">@lang('payment.title')</h3>
         <form id="pay-form" action="{{ route('payment', $user) }}" method="POST">
             @csrf
-            <label class="mb-3">Your registration fee is {{ number_format($user->payment_price) }} . Please do the payment to active your account!</label>
+            <label class="mb-3">@lang('payment.your_registration_fee_is') {{ number_format($user->payment_price) }} . @lang('payment.do_payment')</label>
             <div class="form-floating mb-3 text-center">
                 <input type="number" name="amount" class="form-control" id="amount" placeholder="Amount">
-                <label for="amount">Enter your payment amount</label>
+                <label for="amount">@lang('payment.enter_amount')</label>
                 @error('amount')
                     <p class="text-danger">{{ $message }}</p>
                 @else
                     @if(session()->has('underpaid'))
-                        <p class="text-danger">{{ session('underpaid') }}</p>
+                        <p class="text-danger my-1">{{ session('underpaid') }}</p>
                     @endif
                 @enderror
-                <button id="submit-pay" type="submit" class="btn text-light mt-3" style="background: #7834fc;" data-bs-toggle="modal">Pay</button>
+                <button id="submit-pay" type="submit" class="btn text-light mt-3" style="background: #7834fc;" data-bs-toggle="modal">@lang('payment.pay')</button>
             </div>
         </form>
         @if(session()->has('overpaid'))
@@ -46,15 +46,14 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Overpaid!!!</h5>
+              <h5 class="modal-title">@lang('payment.overpaid.title')</h5>
             </div>
             <div class="modal-body">
-              <p>Sorry you overpaid <span id="overpaid_amount"></span>, would you like to enter a 
-                balance?</p>
+              <p>@lang('payment.overpaid.sorry') <span id="overpaid_amount"></span>, @lang('payment.overpaid.question')@lang</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">No</button>
-              <button class="btn btn-primary" onclick="submit()">Yes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload()">@lang('general.no')</button>
+              <button class="btn btn-primary" onclick="submit()">@lang('general.yes')</button>
             </div>
           </div>
         </div>

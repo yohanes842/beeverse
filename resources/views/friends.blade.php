@@ -8,7 +8,7 @@
     <div class="d-flex flex-column flex-wrap gap-3 mx-auto my-5 align-items-center" style="width:86%">
         @forelse($friends as $friend)
             <div class="card shadow rounded p-3" style="max-width: 740px; width: 70%">
-                <div class=" d-flex justify-content-between align-items-center pe-5">
+                <div class=" d-flex justify-content-between align-items-end pe-5 pb-2">
                     <div class="d-flex">
                         <div class="d-flex justify-content-end align-items-end col-md-3 py-2 px-3" 
                         style="width: 13rem; background: url('https://source.unsplash.com/300x200/?{{$friend->wishlistedUser->hobby}}'); background-position: center;background-repeat: no-repeat; background-size: cover;">
@@ -35,8 +35,8 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-end gap-1">
-                        <a href="{{route('chat', $friend->wishlistedUser)}}" target="_blank" style="width: 100%"><button class="btn btn-dark btn-sm py-1 px-2" style="width: 100%">Chat</button></a> 
-                        <a href="{{route('collection', $friend->wishlistedUser)}}"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-2">View</button></a> 
+                        <a href="{{route('chat', $friend->wishlistedUser)}}" target="_blank" style="width: 100%"><button class="btn btn-dark btn-sm py-1 px-3" style="width: 100%">Chat</button></a> 
+                        <a href="{{route('collection', $friend->wishlistedUser)}}"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-3">View</button></a> 
                     </div>
                 </div>
               </div>

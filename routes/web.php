@@ -4,11 +4,10 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\TopupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
-use App\Models\User;
-use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/lang/{locale?}', [LangController::class, 'lang'])->name('lang');
 
 Route::get('/', function () {
     return redirect()->route('home');
