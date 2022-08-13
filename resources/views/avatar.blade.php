@@ -25,7 +25,7 @@
                             <form action="{{ route('purchase', $avatar) }}" method="POST">
                                 @csrf
                                 <button class="text-light btn btn-secondary" type='submit' style="border: none;" disabled>
-                                    Purchased
+                                    Already Had
                                 </button>
                             </form>
                             <button avatar="{{$avatar}}" data-bs-toggle="modal" data-bs-target="#send-modal" class="gift-btn text-light btn" type='button' style="border: none; background-color: #7834fc;">

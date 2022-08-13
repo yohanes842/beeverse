@@ -48,8 +48,12 @@ class User extends Authenticatable
         return $this->hasMany(Wishlist::class);
     }
 
+    public function user(){
+        return $this->hasMany(Chat::class);
+    }
+
     public function visibleStatus(){
-        return $this->belongsTo(VisibleStatus::class, 'visible_status_id', 'id');
+        return $this->belongsTo(VisibleStatus::class, 'id', 'visible_status_id');
     }
 
     public function paymentStatus(){
@@ -58,5 +62,13 @@ class User extends Authenticatable
 
     public function usersAvatars(){
         return $this->hasMany(UsersAvatar::class);
+    }
+
+    public function countFriends(){
+        return $this->wishlists()->where('isFriend', true)->count();
+    }
+
+    public function countCollections(){
+        return $this->usersAvatars()->count();
     }
 }

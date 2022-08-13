@@ -35,8 +35,8 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-end gap-1">
-                        <a href="{{$friend->wishlistedUser->instagram_username}}" target="_blank"><button class="btn btn-dark btn-sm py-1 px-2">Chat via Instagram</button></a> 
-                        <a href="{{route('collection', $friend->wishlistedUser)}}"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-2">See for Collections</button></a> 
+                        <a href="{{route('chat', $friend->wishlistedUser)}}" target="_blank" style="width: 100%"><button class="btn btn-dark btn-sm py-1 px-2" style="width: 100%">Chat</button></a> 
+                        <a href="{{route('collection', $friend->wishlistedUser)}}"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-2">View</button></a> 
                     </div>
                 </div>
               </div>

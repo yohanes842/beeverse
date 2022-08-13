@@ -39,3 +39,7 @@ h5,
 h6 {
     color: #2e0249 !important;
 }
+
+.scroll-chat::-webkit-scrollbar {
+    display: none;
+}

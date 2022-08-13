@@ -19,18 +19,29 @@
                     </div>
                 @endif
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">
+                    <div class="card-body d-flex gap-5 justify-content-between">
+                        <div>
+                            <h5 class="card-title mb-0">
                             @if($user->gender_id == 1)
                                 <i class="fa-solid fa-mars fa-1x mx-1" style="color: #7834fc"></i>
                             @elseif($user->gender_id == 2)
                                 <i class="fa-solid fa-venus fa-1x mx-1" style="color: #FA2FB5"></i>
                             @endif
-                            {{$user->nickname}}</h5>
-                        <h6 class="card-text mb-0">{{$user->name}}</h6>
-                        <h6 class="card-text mb-0">{{$user->age}} years old</h6>
-                        <h6 class="card-text mb-0">{{$user->mobile_number}}</h6>
-                        <h6 class="card-text mb-0 text-muted">{{$user->hobby}}</h6>
+                                {{$user->nickname}}</h5>
+                            <h6 class="card-text mb-0">{{$user->name}}</h6>
+                            <h6 class="card-text mb-0">{{$user->age}} years old</h6>
+                            <h6 class="card-text mb-0">{{$user->mobile_number}}</h6>
+                            <h6 class="card-text mb-0 text-muted">{{$user->hobby}}</h6>
+                        </div>
+                        <div class="text-end d-flex flex-column justify-content-between" style="width: fit-content">
+                            <div>
+                                <h6 class="card-text mb-0 text-nowrap">Total friend(s) : {{$user->countFriends()}}</h6>
+                                <h6 class="card-text mb-0 text-nowrap">Total collection(s) : {{$user->countCollections()}}</h6>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2">
+                                <button class="btn text-light btn-sm btn-dark"><a href="{{$user->instagram_username}}" target="_blank" style="text-decoration: none; color: white">Instagram</a></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,19 +53,29 @@
             @forelse($collections as $collection)
                 <div class="card shadow" style="width: 18rem; border-radius: 100px">
                     <img src="{{asset($collection->avatar->image_url)}}" class="card-img-top img-fluid" style="background: #feefff; width: 286px; height: 429px; object-fit:cover;" alt="...">
-                    <div class="card-body d-flex flex-column justify-content-between align-items-center gap-2" style="background: #FFF9D7" >
-                        <div class="d-flex align-items-center" style="width: 100%">
-                            <div style="color: #C689C6">
-                                <h4 card-title mb-0>{{$collection->avatar->name}}</h4>
-                            </div>
+                    <div class="card-body d-flex gap-5 justify-content-between">
+                        <div>
+                            <h5 class="card-title mb-0">
+                            @if($user->gender_id == 1)
+                                <i class="fa-solid fa-mars fa-1x mx-1" style="color: #7834fc"></i>
+                            @elseif($user->gender_id == 2)
+                                <i class="fa-solid fa-venus fa-1x mx-1" style="color: #FA2FB5"></i>
+                            @endif
+                                {{$user->nickname}}</h5>
+                            <h6 class="card-text mb-0">{{$user->name}}</h6>
+                            <h6 class="card-text mb-0">{{$user->age}} years old</h6>
+                            <h6 class="card-text mb-0">{{$user->mobile_number}}</h6>
+                            <h6 class="card-text mb-0 text-muted">{{$user->hobby}}</h6>
                         </div>
-                        <div class="d-flex justify-content-end gap-2" style="width: 100%">
-                            <form action="{{ route('set-avatar', $collection->avatar) }}" method="POST">
-                                @csrf
-                                    <button class="text-light btn" type='submit' style="border: none; background-color: #7834fc;">
-                                        Set as Profile
-                                    </button>
-                            </form>
+                        <div class="text-end d-flex flex-column justify-content-between" style="width: fit-content">
+                            <div>
+                                <h6 class="card-text mb-0 text-nowrap">Total friend(s) : {{$user->countFriends()}}</h6>
+                                <h6 class="card-text mb-0 text-nowrap">Total collection(s) : {{$user->countCollections()}}</h6>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2">
+                                <button class="btn text-light btn-sm btn-dark"><a href="{{$user->instagram_username}}" target="_blank" style="text-decoration: none; color: white">Instagram</a></button>
+                                <button class="btn text-dark fw-bold btn-sm btn-light border-dark border-2"><a href="{{route('chat', $user)}}" target="_blank" style="text-decoration: none; color: black">Chat</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,18 +100,30 @@
                     </div>
                 @endif
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">
+                    <div class="card-body d-flex gap-5 justify-content-between">
+                        <div>
+                            <h5 class="card-title mb-0">
                             @if($user->gender_id == 1)
                                 <i class="fa-solid fa-mars fa-1x mx-1" style="color: #7834fc"></i>
                             @elseif($user->gender_id == 2)
                                 <i class="fa-solid fa-venus fa-1x mx-1" style="color: #FA2FB5"></i>
                             @endif
-                            {{$user->nickname}}</h5>
-                        <h6 class="card-text mb-0">{{$user->name}}</h6>
-                        <h6 class="card-text mb-0">{{$user->age}} years old</h6>
-                        <h6 class="card-text mb-0">{{$user->mobile_number}}</h6>
-                        <h6 class="card-text mb-0 text-muted">{{$user->hobby}}</h6>
+                                {{$user->nickname}}</h5>
+                            <h6 class="card-text mb-0">{{$user->name}}</h6>
+                            <h6 class="card-text mb-0">{{$user->age}} years old</h6>
+                            <h6 class="card-text mb-0">{{$user->mobile_number}}</h6>
+                            <h6 class="card-text mb-0 text-muted">{{$user->hobby}}</h6>
+                        </div>
+                        <div class="text-end d-flex flex-column justify-content-between" style="width: fit-content">
+                            <div>
+                                <h6 class="card-text mb-0 text-nowrap">Total friend(s) : {{$user->countFriends()}}</h6>
+                                <h6 class="card-text mb-0 text-nowrap">Total collection(s) : {{$user->countCollections()}}</h6>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2">
+                                <button class="btn text-light btn-sm btn-dark"><a href="{{$user->instagram_username}}" target="_blank" style="text-decoration: none; color: white">Instagram</a></button>
+                                <button class="btn text-dark fw-bold btn-sm btn-light border-dark border-2"><a href="{{route('chat', $user)}}" target="_blank" style="text-decoration: none; color: black">Chat</a></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

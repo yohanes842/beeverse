@@ -72,7 +72,7 @@
                 </div>
             </a>
             @empty
-                <h2 class="text-center" style="width: 100%">No user found!</h2>
+                <h2 class="text-center" style="width: 100%">No query result!</h2>
             @endforelse
         </div>
     </div>

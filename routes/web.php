@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TopupController;
 use App\Http\Controllers\UserController;
@@ -65,6 +66,13 @@ Route::controller(WishlistController::class)->group(function(){
     Route::middleware('auth')->group(function () {
         Route::post('/thumb/{user}', 'wishlist')->name('thumb');
         Route::get('/friends', 'friends_index')->name('friends');
+    });
+});
+
+Route::controller((ChatController::class))->group(function(){
+    Route::middleware('auth')->group(function () {
+        Route::get('/chat/{user}', 'index')->name('chat');
+        Route::post('/chat/{user}', 'add')->name('chat');
     });
 });
 
