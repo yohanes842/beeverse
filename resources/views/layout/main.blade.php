@@ -17,6 +17,6 @@
     <div class="position-fixed top-0" style="background:url({{asset('wallpaper-home.jpg')}}); width: 100vw; height: 100vh; z-index:-1; background-position: center;background-repeat: no-repeat; background-size: cover; opacity:0.7"></div>
     @include('partial.toast')
     @include('partial.navbar')
-    @yield('body');
+    @yield('body')
 </body>
 </html>

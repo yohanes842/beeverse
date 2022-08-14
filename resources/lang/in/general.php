@@ -1,20 +1,20 @@
 <?php
     return[
-        'coin' => 'coin(s)',
-        'male' => 'Male',
-        'female'=> 'Female',
-        'none' => 'None',
-        'balance' => 'Balance',
-        'login' => 'Login',
-        'register' => 'Register',
-        'yes' => 'Yes',
-        'no' => 'No',
+        'coin' => 'koin',
+        'male' => 'Pria',
+        'female'=> 'Wanita',
+        'none' => 'Keduanya',
+        'balance' => 'Saldo',
+        'login' => 'Masuk',
+        'register' => 'Daftar',
+        'yes' => 'Iya',
+        'no' => 'Tidak',
         'filter' => 'Filter',
-        'today' => 'Today',
-        'price' => 'Price',
-        'years_old' => 'years old',
+        'today' => 'Hari ini',
+        'price' => 'Harga',
+        'years_old' => 'tahun',
         'instagram' => 'Instagram',
         'chat' => 'Chat',
-        'read' => 'Read'
+        'read' => 'Baca'
     ];
 ?>

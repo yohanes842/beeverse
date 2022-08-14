@@ -1,15 +1,15 @@
 <?php
     return[
-        'title' => 'Registration Payment',
-        'your_registration_fee_is' => 'Your registration fee is',
-        'do_payment' => 'Please do the payment to active your account!',
-        'enter_amount' => 'Enter your payment amount',
+        'title' => 'Pembayaran Pendaftaran',
+        'your_registration_fee_is' => 'Biaya pendaftaran Anda',
+        'do_payment' => 'Silahkan lakukan pembayaran untuk mengaktifkan akun',
+        'enter_amount' => 'Masukan nominal pembayaran',
         'overpaid' => [
-            'title' => 'Overpaid!!!',
-            'sorry' => 'Sorry you overpaid',
-            'question' => 'would you like to enter a balance?',
+            'title' => 'Kelebihan bayar!!!',
+            'sorry' => 'Maaf Anda kelebihan bayar',
+            'question' => 'apakah Anda ingin memasukkannya ke dalam saldo Anda?',
         ],
-        'pay' => 'Pay',
+        'pay' => 'Bayar',
 
     ];
 ?>

@@ -17,8 +17,8 @@
         'set_public' => 'Set to Public',
         'logout' => 'Log Out',
         'guest' => 'Guest',
-        'msg_private' => 'Are you sure want to hide your photos? It will cost 50 coins?',
-        'msg_public' => 'Are you sure want back to public account? It will cost 5 coins?'
+        'msg_private' => 'Are you sure want to hide your photos? It will cost 50 coin(s)',
+        'msg_public' => 'Are you sure want back to public account? It will cost 5 coin(s)'
         
     ];
 ?>

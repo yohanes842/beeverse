@@ -13,5 +13,7 @@
         'no_avatar' => 'No avatar available!',
         'profile_of' => 'Profile of',
         'private_account' => 'Sorry this account is private!',
+        'set_profile' => 'Set as Profile',
+        'gift_from' => 'Gift from'
     ];
 ?>

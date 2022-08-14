@@ -1,25 +1,29 @@
 <?php
     return [
-        'problem' => 'Sorry there is a problem. Please try again!',
-        'insufficient' => 'Insufficient Balance!',
+        'problem' => 'Maaf ada masalah. Silahkan coba lagi!',
+        'insufficient' => 'Saldo tidak cukup!',
         'login' => [
-            'success' => 'Successful Login!',
-            'invalid' => 'Invalid credentials!',
+            'success' => 'Masuk Berhasil!',
+            'invalid' => 'Email dan password tidak cocok!',
         ],
         'payment' => [
-            'underpaid' => 'You are still underpaid',
-            'success' => 'Successful register and activate account with initial balance',
+            'underpaid' => 'Pembayaran Anda masih tidak mencukupi',
+            'success' => 'Daftar berhasil, akun Anda telah aktif dengan saldo awal',
         ],
         'logout' => [
-            'success' => 'Logout successful!',
+            'success' => 'Logout Berhasil!',
         ],
-        'success_private' => 'Your account is private now! No one can see your photos.',
-        'success_public' => 'Your account is public now! Everyone can see your photos.',
-        'add_coin' => '+100 Your current balance :',
+        'success_private' => 'Akun Anda sudah privat sekarang. Tidak ada orang asing yang dapat melihat Anda',
+        'success_public' => 'Akun Anda sudah publik sekarang. Semua orang dapat melihat Anda',
+        'add_coin' => '+100 Saldo Anda sekarang :',
         'avatar_success' => [
-            'purchase' => 'Successfull purchased avatar!',
-            'profile' => 'Successful set profile!',
-            'send' => 'Successful sent avatar!',
+            'purchase' => 'Avatar berhasil dibeli!',
+            'profile' => 'Profil berhasil diganti!',
+            'send' => 'Avatar berhasil dikirim!',
+        ],
+        'wishlist' => [
+            'add' => 'Berhasil menambahkan pengguna ke wishlist Anda!',
+            'remove' => 'Berhasil menghapus pengguna dari wishlist Anda!'
         ],
     ];
 ?>

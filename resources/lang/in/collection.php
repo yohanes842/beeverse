@@ -13,5 +13,7 @@
         'no_avatar' => 'No avatar available!',
         'profile_of' => 'Profil',
         'private_account' => 'Maaf akun ini disembunyikan!',
+        'set_profile' => 'Atur sebagai profil',
+        'gift_from' => 'Hadiah dari'
     ];
 ?>

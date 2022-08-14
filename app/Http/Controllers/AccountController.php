@@ -46,7 +46,7 @@ class AccountController extends Controller
             'age' => ['required', 'min:1'],
             'gender' => ['required', 'exists:genders,id'],
             'instagram_username'=> ['required', 'unique:users,instagram_username'],
-            'mobile_number' => ['required', 'digits_between:11,13', 'regex:/^[0][0-9]{10,12}/'],
+            'mobile_number' => ['required', 'digits_between:11,13', 'regex:/^[0][0-9]{10,12}/', 'unique:users,mobile_number'],
             'hobbies' => ['required', 'min:3'],
             'hobbies.*' => ['required'],
             'email' => ['required','email', 'unique:users,email'],
@@ -89,7 +89,7 @@ class AccountController extends Controller
         $sufficient = $user->payment_price - $request->amount;
         if($sufficient > 0){
             $sufficient = number_format($sufficient);
-            return redirect()->route('payment', $user)->with('underpaid', __('message.payment.underpaid') .$sufficient. __('general.coin'));
+            return redirect()->route('payment', $user)->with('underpaid', __('message.payment.underpaid')." ".$sufficient." ".__('general.coin'));
         } else if($sufficient < 0){
             $overpaid = $sufficient*(-1);
             $user->payment_status_id = 2;

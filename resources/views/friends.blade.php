@@ -3,8 +3,8 @@
 @section('title', 'Friends')
 
 @section('body')
-    <h2 class="text-center">Friend list</h2>
-    <h6 class="text-center">You might like to contact your friends...</h6>
+    <h2 class="text-center">@lang('friend.title')</h2>
+    <h6 class="text-center">@lang('friend.subtitle')</h6>
     <div class="d-flex flex-column flex-wrap gap-3 mx-auto my-5 align-items-center" style="width:86%">
         @forelse($friends as $friend)
             <div class="card shadow rounded p-3" style="max-width: 740px; width: 70%">
@@ -28,20 +28,25 @@
                                     @endif
                                     {{$friend->wishlistedUser->nickname}}</h5>
                                 <h6 class="card-text mb-0">{{$friend->wishlistedUser->name}}</h6>
-                                <h6 class="card-text mb-0">{{$friend->wishlistedUser->age}} years old</h6>
+                                <h6 class="card-text mb-0">{{$friend->wishlistedUser->age}} @lang('general.years_old')</h6>
                                 <h6 class="card-text mb-0">{{$friend->wishlistedUser->mobile_number}}</h6>
                                 <h6 class="card-text mb-0 text-muted">{{$friend->wishlistedUser->hobby}}</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column align-items-end gap-1">
-                        <a href="{{route('chat', $friend->wishlistedUser)}}" target="_blank" style="width: 100%"><button class="btn btn-dark btn-sm py-1 px-3" style="width: 100%">Chat</button></a> 
-                        <a href="{{route('collection', $friend->wishlistedUser)}}"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-3">View</button></a> 
+                    <div class="d-flex flex-column align-items-end gap-1" style="width: fit-content">
+                        <a href="{{route('chat', $friend->wishlistedUser)}}" style="width: 100%">
+                            <button class="btn btn-dark btn-sm py-1 px-3" style="width: 100%">@lang('general.chat')
+                            @if(auth()->user()->countNewChat($friend->wishlistedUser) > 0)
+                                <span class="rounded-circle bg-danger text-light px-2">{{auth()->user()->countNewChat($friend->wishlistedUser)}}</span>
+                            @endif
+                            </button></a> 
+                        <a href="{{route('collection', $friend->wishlistedUser)}}" style="width: 100%"><button class="btn btn-light border-dark border-2 btn-sm py-1 px-3" style="width: 100%">@lang('friend.view')</button></a> 
                     </div>
                 </div>
               </div>
         @empty
-            <h2 class="text-center" style="width: 100%">No friends yet! Go and find some friend!</h2>
+            <h2 class="text-center" style="width: 100%">@lang('friend.no_friend')</h2>
         @endforelse
     </div>
 @endsection

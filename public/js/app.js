@@ -2129,7 +2129,10 @@ giftBtn === null || giftBtn === void 0 ? void 0 : giftBtn.forEach(function (e) {
       e.value = avatar;
     });
   });
-});
+}); //chat scroll
+
+var chat = document.getElementById("chat-container");
+chat.scrollTo(100, chat.scrollHeight);
 
 /***/ }),
 

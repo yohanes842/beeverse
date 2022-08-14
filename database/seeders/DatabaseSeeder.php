@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             AvatarSeeder::class,
             WishlistSeeder::class,
             ChatSeeder::class,
+            UsersAvatarSeeder::class
         ]);
     }
 }

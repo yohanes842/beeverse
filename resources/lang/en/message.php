@@ -21,5 +21,9 @@
             'profile' => 'Successful set profile!',
             'send' => 'Successful sent avatar!',
         ],
+        'wishlist' => [
+            'add' => 'Added thumbs!',
+            'remove' => 'Removed thumbs!'
+        ],
     ];
 ?>

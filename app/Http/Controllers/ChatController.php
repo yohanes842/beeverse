@@ -31,13 +31,15 @@ class ChatController extends Controller
     }
 
     public function add(Request $request, User $user){
-        $current = auth()->user();
+        if($request->chat){
+            $current = auth()->user();
         
-        Chat::create([
-            'chat_desc' => $request->chat,
-            'user_id' => $current->id,
-            'to_user_id' => $user->id
-        ]);
+            Chat::create([
+                'chat_desc' => $request->chat,
+                'user_id' => $current->id,
+                'to_user_id' => $user->id
+            ]);
+        }
         
         return redirect()->route('chat', $user);
     }

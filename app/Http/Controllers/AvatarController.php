@@ -84,6 +84,7 @@ class AvatarController extends Controller
         UsersAvatar::create([
             'user_id' => $user->id,
             'avatar_id' => $avatar->id,
+            'from_id' => $current->id
         ]);
 
         return redirect()->back()->with('message', __('message.avatar_success.send'));

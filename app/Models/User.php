@@ -71,4 +71,10 @@ class User extends Authenticatable
     public function countCollections(){
         return $this->usersAvatars()->count();
     }
+
+    public function countNewChat(User $user){
+        return Chat::where('user_id', $user->id)
+                    ->where('to_user_id', $this->id)
+                    ->where('isRead', false)->get()->count();
+    }
 }

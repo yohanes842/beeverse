@@ -76,3 +76,8 @@ giftBtn?.forEach((e) => {
         });
     });
 });
+
+//chat scroll
+const chat = document.getElementById("chat-container");
+
+chat.scrollTo(100, chat.scrollHeight);

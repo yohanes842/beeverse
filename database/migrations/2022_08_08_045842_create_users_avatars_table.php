@@ -17,9 +17,9 @@ class CreateUsersAvatarsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('avatar_id')->constrained();
-            // $table->foreignId('from_id')
-            //     ->references('id')->on('users')
-            //         ->constrained();
+            $table->foreignId('from_id')->nullable()
+                ->references('id')->on('users')
+                    ->constrained();
             $table->timestamps();
         });
     }

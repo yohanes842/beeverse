@@ -26,16 +26,16 @@
                 <form id="formSearch" action="{{ route('search') }}" method="GET" class="d-flex invisible" role="search">
                     <select id="genderSelect" name="gender" class="form-select form-select-sm mx-2" aria-label=".form-select-sm example" style="width: fit-content">
                       <option value="" selected disabled>@lang('navbar.filter_gender')</option>
-                      <option value="">None</option>
+                      <option value="">@lang('general.none')</option>
                       <option value="1" @if(isset($gender_filter) && $gender_filter == 1) selected @endif>@lang('general.male')</option>
                       <option value="2" @if(isset($gender_filter) && $gender_filter == 2) selected @endif>@lang('general.female')</option>
                     </select>
-                    <input id="queryInput" class="form-control me-2" style="min-width: 320px" name="search-keyword" type="search" placeholder=@lang('navbar.search.placeholder') aria-label="Search" value="{{$keyword ?? ''}}">
+                    <input id="queryInput" class="form-control me-2" style="min-width: 320px" name="search-keyword" type="search" placeholder="@lang('navbar.search.placeholder')" aria-label="Search" value="{{$keyword ?? ''}}">
                     <button class="btn btn-outline-dark text-light" type="submit">@lang('navbar.search.search')</button>
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                       @lang('navbar.setting')
                     </a>
                     
@@ -92,11 +92,11 @@
       <div class="position-fixed btn-group end-0 mx-2" style="">
         <form action="{{route('lang', 'en')}}" method="POST">
           @csrf
-          <button type="submit" class="btn" style="border: #7834fc solid 1px; background: white; @if(!session()->has('applocale') || session('applocale') == 'en') background: #7834fc; color: white @endif">EN</button>
+          <button type="submit" class="rounded-start" style="border: #7834fc solid 1px; background: white; @if(!session()->has('applocale') || session('applocale') == 'en') background: #7834fc; color: white @endif">EN</button>
         </form>
         <form action="{{route('lang', 'in')}}" method="POST">
           @csrf
-          <button type="submit" class="btn" style="border: #7834fc solid 1px; background: white; @if(session()->has('applocale') && session('applocale') == 'in') background: #7834fc; color: white @endif">IN</button>
+          <button type="submit" class="rounded-end" style="border: #7834fc solid 1px; background: white; @if(session()->has('applocale') && session('applocale') == 'in') background: #7834fc; color: white @endif">IN</button>
         </form>
       </div>
 </header>

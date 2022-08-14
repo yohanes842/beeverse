@@ -10,12 +10,12 @@ class WishlistController extends Controller
 {
     public function wishlist(User $user){
         $current = auth()->user();
-        if($current == $user) return redirect()->back()->with('message', 'Sorry there is a problem. Please try again!');
+        if($current == $user) return redirect()->back()->with('message', __('message.problem'));
 
         $wishlist = auth()->user()->wishlists()->where('wishlisted_user_id', $user->id)->first();
 
         if (!$wishlist) {
-            $friend = Wishlist::where('id', $user->id)
+            $friend = $user->wishlists()
                         ->where('wishlisted_user_id', $current->id)->first();
             if($friend){
                 $friend->isFriend = true;
@@ -24,20 +24,19 @@ class WishlistController extends Controller
                 Wishlist::create([
                     'user_id' => $current->id,
                     'wishlisted_user_id' => $user->id,
-                    'isFriend' =>true,
+                    'isFriend' => true,
+                ]);
+            } else{
+                Wishlist::create([
+                    'user_id' => $current->id,
+                    'wishlisted_user_id' => $user->id,
+                    'isFriend' =>false,
                 ]);
             }
-
-            Wishlist::create([
-                'user_id' => $current->id,
-                'wishlisted_user_id' => $user->id,
-                'isFriend' =>false,
-            ]);
-            
-            return redirect()->back()->with('message', 'Added thumbs!');
+            return redirect()->back()->with('message', __('message.wishlist.add'));
         }
 
-        $friend = Wishlist::where('id', $user->id)
+        $friend = $user->wishlists
                         ->where('wishlisted_user_id', $current->id)->first();
         if($friend){
             $friend->isFriend = false;
@@ -46,7 +45,7 @@ class WishlistController extends Controller
 
         $wishlist->delete();
 
-        return redirect()->back()->with('message', 'Removed thumbs!');
+        return redirect()->back()->with('message',  __('message.wishlist.remove'));
     }
 
     public function friends_index(){

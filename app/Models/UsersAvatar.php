@@ -17,4 +17,7 @@ class UsersAvatar extends Model
     public function avatar(){
         return $this->belongsTo(Avatar::class);
     }
+    public function from(){
+        return $this->belongsTo(User::class, 'from_id', 'id');
+    }
 }
