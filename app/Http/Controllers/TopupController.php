@@ -17,7 +17,7 @@ class TopupController extends Controller
             $user->balance = $user->balance + 100;
             $user->save();
     
-            return redirect()->back()->with('message', __('message.add_coin')." ".number_format($user->balance)." ". __('general_coin'));
+            return redirect()->back()->with('message', __('message.add_coin')." ".number_format($user->balance)." ". __('general.coin'));
         }
        
     }

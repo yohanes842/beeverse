@@ -18,6 +18,7 @@
         'register' => 'Daftar',
         'msg' =>[
             'success' => 'Daftar Berhasil!',
-        ]
+        ],
+        'free' => 'Anda akan mendapatkan 100 koin gratis setelah menyelesaikan biaya pendaftaran',
     ];
 ?>

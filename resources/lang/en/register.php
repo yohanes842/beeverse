@@ -18,6 +18,7 @@
         'register' => 'Register',
         'msg' =>[
             'success' => 'Successful Login!',
-        ]
+        ],
+        'free' => 'You will get free +100 coin(s) after registration payment',
     ];
 ?>

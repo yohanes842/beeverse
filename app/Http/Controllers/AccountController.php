@@ -63,7 +63,7 @@ class AccountController extends Controller
             'age' => $request->age,
             'hobby' => $hobbies,
             'gender_id' => $request->gender,
-            'instagram_username' => 'http://www.instagram.com/'.$request->instagram_username,
+            'instagram_username' => 'https://www.instagram.com/'.$request->instagram_username,
             'mobile_number' => $request->mobile_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),

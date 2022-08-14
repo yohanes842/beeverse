@@ -25,21 +25,21 @@
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name') }}">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name') }}" autocomplete="off">
                 <label for="name">@lang('register.name')</label>
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Nickname" value="{{ old('nickname') }}">
+                <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Nickname" value="{{ old('nickname') }}" autocomplete="off">
                 <label for="nickname">@lang('register.nickname')</label>
                 @error('nickname')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="number" name="age" class="form-control" id="age" placeholder="Age" value="{{ old('age') }}">
+                <input type="number" name="age" class="form-control" id="age" placeholder="Age" value="{{ old('age') }}" autocomplete="off">
                 <label for="age">@lang('register.age')</label>
                 @error('age')
                     <p class="text-danger">{{ $message }}</p>
@@ -64,15 +64,20 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" name="instagram_username" class="form-control" id="instagram_username" placeholder="Instagram username" value="{{ old('instagram_username') }}">
-                <label for="instagram_username">@lang('register.instagram_username')</label>
-                @error('instagram_username')
-                    <p class="text-danger">{{ $message }}</p>
-                @enderror
+            @error('instagram_username')
+            <div class="input-group ">
+                <span class="input-group-text" id="basic-addon3">https://www.instagram.com/</span>
+                <input type="text" name="instagram_username" class="form-control" id="instagram_username" placeholder="@lang('register.instagram_username')" value="{{ old('instagram_username') }}" autocomplete="off">
             </div>
+            <p class="text-danger mb-3">{{ $message }}</p>
+            @else
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">https://www.instagram.com/</span>
+                <input type="text" name="instagram_username" class="form-control" id="instagram_username" placeholder="@lang('register.instagram_username')" value="{{ old('instagram_username') }}" autocomplete="off">
+            </div>
+            @enderror
             <div class="form-floating mb-3">
-                <input type="text" name="mobile_number" class="form-control" id="mobile_number" placeholder="Mobile number" value="{{ old('mobile_number') }}">
+                <input type="text" name="mobile_number" class="form-control" id="mobile_number" placeholder="Mobile number" value="{{ old('mobile_number') }}" autocomplete="off">
                 <label for="mobile_number">@lang('register.mobile_number')</label>
                 @error('mobile_number')
                     <p class="text-danger">{{ $message }}</p>
@@ -91,7 +96,7 @@
                 @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" value="{{ old('email') }}">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" value="{{ old('email') }}" autocomplete="off">
                 <label for="email">@lang('register.email')</label>
                 @error('email')
                     <p class="text-danger">{{ $message }}</p>
@@ -114,6 +119,7 @@
             <div class="d-flex justify-content-center text-center flex-column" style="width: 100%">
                 <a class="text-muted mb-2" href="{{route('login')}}">@lang('register.link_login')</a>
                 <button type="submit" class="btn btn-lg text-light" style="background: #7834fc;">@lang('register.register')</button>
+                <h6>@lang('register.free')</h6>
             </div>
           </form>
     </div>

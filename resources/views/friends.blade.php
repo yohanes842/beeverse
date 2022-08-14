@@ -10,14 +10,22 @@
             <div class="card shadow rounded p-3" style="max-width: 740px; width: 70%">
                 <div class=" d-flex justify-content-between align-items-end pe-5 pb-2">
                     <div class="d-flex">
-                        <div class="d-flex justify-content-end align-items-end col-md-3 py-2 px-3" 
-                        style="width: 13rem; background: url('https://source.unsplash.com/300x200/?{{$friend->wishlistedUser->hobby}}'); background-position: center;background-repeat: no-repeat; background-size: cover;">
-                        @if(!isset($friend->wishlistedUser->image_profile))
-                            <img src="https://source.unsplash.com/300x200/?{{$friend->wishlistedUser->hobby}}" class="card-img-top" style="width: 57px; height: 57px px-3; border-radius: 50%; border: solid 3px white; filter: drop-shadow(0 0 1rem #370042);" alt="..."> 
-                        @else 
-                            <img src="{{asset($friend->wishlistedUser->image_profile)}}" class="card-img-top img-fluid" style="width: 57px; height: 57px; border-radius: 50%; border: solid 3px white; filter: drop-shadow(0 0 1rem #370042); background: #FFF9D7;" alt="...">
+                        @if($friend->wishlistedUser->visible_status_id == 1)
+                            <div class="d-flex justify-content-end align-items-end col-md-3 py-2 px-3" 
+                            style="width: 13rem; background: url('https://source.unsplash.com/300x200/?{{$friend->wishlistedUser->hobby}}'); background-position: center;background-repeat: no-repeat; background-size: cover;">
+                            @if(!isset($friend->wishlistedUser->image_profile))
+                                <img src="https://source.unsplash.com/300x200/?{{$friend->wishlistedUser->hobby}}" class="card-img-top" style="width: 57px; height: 57px px-3; border-radius: 50%; border: solid 3px white; filter: drop-shadow(0 0 1rem #370042);" alt="..."> 
+                            @else 
+                                <img src="{{asset($friend->wishlistedUser->image_profile)}}" class="card-img-top img-fluid" style="width: 57px; height: 57px; border-radius: 50%; border: solid 3px white; filter: drop-shadow(0 0 1rem #370042); background: #FFF9D7;" alt="...">
+                            @endif
+                            </div>
+                        @else
+                            @php $rand =  random_int(1,3) @endphp
+                            <div class="d-flex justify-content-end align-items-end col-md-3 py-2 px-3" 
+                            style="width: 13rem; background: url('{{asset('bear/'.$rand.'.jpg')}}'); background-position: center;background-repeat: no-repeat; background-size: cover;">
+                                <img src="{{asset('bear/'.$rand.'.jpg')}}" class="card-img-top img-fluid" style="width: 57px; height: 57px; border-radius: 50%; border: solid 3px white; filter: drop-shadow(0 0 1rem #370042); background: #FFF9D7;" alt="...">
+                            </div>
                         @endif
-                        </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title mb-0">

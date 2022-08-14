@@ -33,7 +33,7 @@
                 @endif
             @enderror
             <div class="form-floating">
-                <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
                 <label for="email">@lang('login.email')</label>
             </div>
             <div class="form-floating mb-3">

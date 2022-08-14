@@ -15,7 +15,7 @@
                 <input type="hidden" id="gender-key" name="gender">
                 @foreach ($hobbies as $hobby)
                     <div class="form-check ms-3">
-                        <input class="form-check-input" style="border: solid 2px #7834fc" name="hobbies[]" type="checkbox" value="{{ $hobby->hobby_name }}" id="flexCheckDefault" {{ (isset($hobbies_cheked) && is_array($hobbies_checked) && in_array($hobby->hobby_name, $hobbies_checked)) ? ' checked' : '' }}>
+                        <input class="form-check-input" style="border: solid 2px #7834fc" name="hobbies[]" type="checkbox" value="{{ $hobby->hobby_name }}" id="flexCheckDefault" {{ (isset($hobbies_checked) && is_array($hobbies_checked) && in_array($hobby->hobby_name, $hobbies_checked)) ? ' checked' : '' }}>
                         <label class="form-check-label" for="hobbies[]">
                             {{ $hobby->hobby_name }}
                         </label>

@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Collectors Angel')
+@section('title', 'Chat')
 
 @section('body')
 <div id="chat-container" class="scroll-chat mx-2 overflow-scroll mb-0" style="height:84vh; scroll-behavior: auto;">

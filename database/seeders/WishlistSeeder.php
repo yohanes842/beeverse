@@ -16,14 +16,9 @@ class WishlistSeeder extends Seeder
     {
         Wishlist::insert([
             [
-                'user_id' => 7,
-                'wishlisted_user_id' => 1,
-                'isFriend' => true,
-            ],
-            [
                 'user_id' => 1,
                 'wishlisted_user_id' => 7,
-                'isFriend' => true,
+                'isFriend' => false,
             ],
             [
                 'user_id' => 7,

@@ -11,9 +11,12 @@ class HomeController extends Controller
     public function index(){
         $user = auth()->user();
         if(isset($user)){
-            $users = User::where('visible_status_id', 1)->where('id', '!=', $user->id)->get();
+            $users = User::where('visible_status_id', 1)
+                ->where('payment_status_id', 2)
+                ->where('id', '!=', $user->id)->get();
         } else{
-            $users = User::where('visible_status_id', 1)->get();
+            $users = User::where('visible_status_id', 1)
+                ->where('payment_status_id', 2)->get();
         }
 
 
@@ -30,9 +33,13 @@ class HomeController extends Controller
 
         $user = auth()->user();
         if(isset($user)){
-            $users = User::where('visible_status_id', 1)->where('id', '!=', $user->id);
+            $users = User::where('visible_status_id', 1)
+                ->where('payment_status_id', 2)
+                ->where('id', '!=', $user->id);
         } else{
-            $users = User::where('visible_status_id', 1)->where('id', '!=', '');
+            $users = User::where('visible_status_id', 1)
+                ->where('payment_status_id', 2)
+                ->where('id', '!=', '');
         }
 
         if(isset($gender_filter)){
