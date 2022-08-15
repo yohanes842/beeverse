@@ -28,7 +28,11 @@
             @else
                 <div class="d-flex">
                     <div>
-                        <img src="{{asset($user->image_profile)}}" class="card-img-top img-fluid mx-2" style="width: 47px; height: 47px; border-radius: 50%; border: solid 3px white; background: #FFF9D7;" alt="...">
+                        @if($chat->user->visible_status_id == 2)
+                            <img src="{{asset('bear/'.random_int(1,3).'.jpg')}}" class="card-img-top img-fluid mx-2" style="width: 47px; height: 47px; border-radius: 50%; border: solid 3px white; background: #FFF9D7;" alt="...">
+                        @else
+                            <img src="{{asset($user->image_profile)}}" class="card-img-top img-fluid mx-2" style="width: 47px; height: 47px; border-radius: 50%; border: solid 3px white; background: #FFF9D7;" alt="...">
+                        @endif
                         <p class="text-center text-light mb-2" style="line-height: 15px">{{$user->name}}</p>
                     </div>
                     <div class="d-flex align-items-end" style="height: fit-content; max-width: 45%">
