@@ -114,7 +114,9 @@
                             </div>
                             <div class="d-flex justify-content-end gap-2">
                                 <a href="{{$user->instagram_username}}" target="_blank" style="text-decoration: none; color: white"><button class="btn text-light btn-sm btn-dark">@lang('general.instagram')</button></a>
-                                <a href="{{route('chat', $user)}}" style="text-decoration: none; color: black"><button class="btn text-dark fw-bold btn-sm btn-light border-dark border-2">@lang('general.chat')</button></a>
+                                @if($user->wishlists()->where('wishlisted_user_id', auth()->user()->id)->where('isFriend', true)->first())
+                                    <a href="{{route('chat', $user)}}" style="text-decoration: none; color: black"><button class="btn text-dark fw-bold btn-sm btn-light border-dark border-2">@lang('general.chat')</button></a>
+                                @endif
                             </div>
                         </div>
                     </div>
